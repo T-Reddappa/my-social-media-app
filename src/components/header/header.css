@@ -1,0 +1,15 @@
+.header-wrapper {
+  display: flex;
+  padding: 1rem 4rem;
+  /* border: 1px solid lightblue; */
+  box-shadow: 2px -3px 34px 0px rgba(186, 230, 241, 0.8);
+  -webkit-box-shadow: 2px -3px 34px 0px rgba(186, 230, 241, 0.8);
+  -moz-box-shadow: 2px -3px 34px 0px rgba(186, 230, 241, 0.8);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 400;
+  color: lightskyblue;
+  cursor: pointer;
+}

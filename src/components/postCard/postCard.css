@@ -1,0 +1,57 @@
+.post-card {
+  text-align: start;
+  /* line-height: 2; */
+  /* border: 1px solid lightblue; */
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
+  /* box-shadow: 0px 0px 10px 0px rgba(149, 191, 224, 0.68); */
+  border-radius: 5px;
+}
+
+.post-social-response {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0.5rem; */
+}
+.user-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  /* box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
+  padding: 0.5rem;
+  border-radius: 5px; */
+}
+
+.post-card-profile-wrapper {
+  /* border: 1px solid lightblue; */
+  display: flex;
+  align-items: start;
+  gap: 0.6rem;
+}
+
+.post-card-profile-picture {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.post-content {
+  margin: 1rem 0;
+  /* box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
+  padding: 0.5rem;
+  border-radius: 5px; */
+}
+.post-socials {
+  cursor: pointer;
+  /* padding: 0.5rem; */
+  /* border: 1px solid black; */
+}
+
+.post-likes {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}

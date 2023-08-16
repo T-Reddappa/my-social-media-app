@@ -1,0 +1,35 @@
+.profile-page-info {
+  border: 1px solid lightblue;
+  /* box-shadow: 5px 5px 5px 1px rgba(36, 113, 173, 0.68); */
+  border-radius: 10px;
+  padding: 1rem;
+}
+.profile-page-picture {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+
+.profile-edit-btn {
+  /* width: 6rem;
+  height: 2rem; */
+  padding: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.profile-description {
+  text-align: start;
+}
+
+.user-social-status {
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid lightblue;
+  padding: 1rem;
+}

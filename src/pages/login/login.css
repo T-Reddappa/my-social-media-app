@@ -1,0 +1,79 @@
+.login-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+  /* background: #f7f7f7; */
+}
+
+.login-card {
+  width: 350px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding-inline: 3rem;
+  /* padding-block-end: 4rem; */
+  gap: 0.3rem;
+  color: gray;
+  border-radius: 5px;
+  box-shadow: -2px 4px 8px -1px rgba(183, 168, 168, 0.75);
+  -webkit-box-shadow: -2px 4px 8px -1px rgba(183, 168, 168, 0.75);
+  -moz-box-shadow: -2px 4px 8px -1px rgba(183, 168, 168, 0.75);
+}
+
+.login-card h3 {
+  margin: 1rem 0 0.5rem 0;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-input label {
+  font-size: 14px;
+  text-align: start;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.login-input input {
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #9a9a9a;
+  font-size: 12px;
+}
+
+.login-forgot-details {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.show-password {
+  margin-left: -4px;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-new-account {
+  display: flex;
+  color: grey;
+  font-size: 14px;
+  text-decoration: none;
+  /* border: 1px solid black; */
+}
+
+.create-new-account:hover {
+  color: black;
+}

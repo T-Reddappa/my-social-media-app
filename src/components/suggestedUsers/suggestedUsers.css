@@ -1,0 +1,20 @@
+.suggest-container {
+  border: 1px solid black;
+  margin-top: 2rem;
+}
+
+.suggest-user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: start;
+  padding: 0.2rem;
+}
+
+.suggest-user-profile-picture {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid black;
+}
