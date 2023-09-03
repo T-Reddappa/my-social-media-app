@@ -26,7 +26,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink className="navlink" to="/bookmarks">
           <BookmarkBorderOutlinedIcon style={{ fontWeight: "300" }} />
-          Bookmark
+          Bookmarks
         </NavLink>
         <NavLink className="navlink" to={`/profile/${currentUser?.username}`}>
           <PermIdentityOutlinedIcon style={{ fontWeight: "300" }} />

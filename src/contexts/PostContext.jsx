@@ -16,6 +16,7 @@ export const PostProvider = ({ children }) => {
   const initialPostsState = {
     allPosts: [],
     postData: initialPostData,
+    postData: initialPostData,
     post: {},
   };
 
@@ -30,6 +31,8 @@ export const PostProvider = ({ children }) => {
       case "LIKE_A_POST":
         return { ...state, allPosts: action.payload };
       case "DISLIKE_POST":
+        return { ...state, allPosts: action.payload };
+      case "EDIT_POST":
         return { ...state, allPosts: action.payload };
       default:
         return state;
@@ -55,6 +58,7 @@ export const PostProvider = ({ children }) => {
   };
 
   const createPost = async ({ content, media }) => {
+    console.log(content);
     try {
       const res = await axios.post(
         "/api/posts",
@@ -146,6 +150,31 @@ export const PostProvider = ({ children }) => {
     }
   };
 
+  const editPost = async (postId, { content }) => {
+    try {
+      const res = await axios.post(
+        `/api/posts/edit/${postId}`,
+        { postData: { content } },
+        { headers: { authorization: token } }
+      );
+
+      const {
+        status,
+        data: { posts },
+      } = res;
+      console.log(res);
+
+      if (status === 201) {
+        postDispatch({ type: "EDIT_POST", payload: posts });
+        console.log(posts);
+        console.log("editedd");
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error("Something went wrong!");
+    }
+  };
+
   const isLikedByCurrentUser = (post, user) => {
     return post?.likes?.likedBy?.some(
       (likedUser) => likedUser.username === user.username
@@ -161,6 +190,7 @@ export const PostProvider = ({ children }) => {
         likePost,
         dislikePost,
         deletePost,
+        editPost,
         isLikedByCurrentUser,
       }}
     >

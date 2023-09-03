@@ -5,6 +5,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 
 import "./suggestedUsers.css";
+import { useNavigate } from "react-router-dom";
 
 const SuggestedUsers = () => {
   const {
@@ -21,6 +22,7 @@ const SuggestedUsers = () => {
   const [loggedUser] = users.filter(
     (user) => user.username === currentUser?.username
   );
+  const navigate = useNavigate();
 
   return (
     <div className="suggest-container">
@@ -30,32 +32,34 @@ const SuggestedUsers = () => {
         {usersToSuggest?.map((user) => {
           return (
             <div className="suggest-user-card" key={user._id}>
-              <img
-                src={user.profilePicture}
-                alt={user.username}
-                className="suggest-user-profile-picture"
-                onClick={() =>
-                  console.log(
-                    user.followers.some(
-                      (user) => user.username === loggedUser.username
-                    )
-                  )
-                }
-              />
-              <div>
-                <p>
-                  {user?.firstName} {user?.lastName}
-                </p>
-                <p>@{user?.username}</p>
+              <div className="suggested-user-info">
+                <img
+                  src={user.profilePicture}
+                  alt={user.username}
+                  className="suggest-user-profile-picture"
+                  onClick={() => navigate(`/profile/${user.username}`)}
+                />
+                <div>
+                  <p>
+                    {user?.firstName} {user?.lastName}
+                  </p>
+                  <p>@{user?.username}</p>
+                </div>
               </div>
               {!user.followers.some(
                 (user) => user.username === loggedUser.username
               ) ? (
-                <button onClick={() => followUser(user._id)}>
+                <button
+                  onClick={() => followUser(user._id)}
+                  className="follow-btn"
+                >
                   Follow <AddOutlinedIcon style={{ fontSize: "14px" }} />
                 </button>
               ) : (
-                <button onClick={() => unfollowUser(user._id)}>
+                <button
+                  onClick={() => unfollowUser(user._id)}
+                  className="follow-btn"
+                >
                   Unfollow <RemoveOutlinedIcon style={{ fontSize: "14px" }} />
                 </button>
               )}

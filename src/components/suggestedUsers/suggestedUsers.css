@@ -1,6 +1,11 @@
 .suggest-container {
-  border: 1px solid black;
+  border: 1px solid lightskyblue;
   margin-top: 2rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+hr {
+  margin: 0.5rem;
 }
 
 .suggest-user-card {
@@ -9,6 +14,12 @@
   justify-content: space-between;
   text-align: start;
   padding: 0.2rem;
+  margin: 0.3rem 0;
+}
+.suggested-user-info {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 }
 
 .suggest-user-profile-picture {
@@ -16,5 +27,18 @@
   height: 3rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid black;
+  border: 2px solid lightskyblue;
+  cursor: pointer;
+}
+
+.suggest-container .follow-btn {
+  border: none;
+  padding: 0.5rem;
+  background-color: lightskyblue;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
 }

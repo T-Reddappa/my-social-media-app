@@ -8,8 +8,8 @@ const Header = () => {
     <header className="header-container">
       <div className="header-wrapper">
         <p onClick={() => navigate("/")}>
-          <span className="logo"> my</span>
-          <span style={{ fontSize: "22px", fontWeight: "400" }}>Social</span>
+          <span className="logo">my</span>
+          <span style={{ fontSize: "22px", fontWeight: "400" }}>Converse</span>
         </p>
       </div>
     </header>

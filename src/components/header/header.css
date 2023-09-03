@@ -7,6 +7,10 @@
   -moz-box-shadow: 2px -3px 34px 0px rgba(186, 230, 241, 0.8);
 }
 
+.header-wrapper p {
+  cursor: pointer;
+}
+
 .logo {
   font-size: 22px;
   font-weight: 400;

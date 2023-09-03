@@ -1,32 +1,26 @@
 .post-card {
   text-align: start;
-  /* line-height: 2; */
-  /* border: 1px solid lightblue; */
   padding: 1rem;
   margin: 1rem 0;
   box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
-  /* box-shadow: 0px 0px 10px 0px rgba(149, 191, 224, 0.68); */
   border-radius: 5px;
+  position: relative;
 }
 
 .post-social-response {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 0.5rem; */
 }
+
 .user-info {
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
-  /* box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
-  padding: 0.5rem;
-  border-radius: 5px; */
 }
 
 .post-card-profile-wrapper {
-  /* border: 1px solid lightblue; */
   display: flex;
   align-items: start;
   gap: 0.6rem;
@@ -37,21 +31,56 @@
   height: 3rem;
   object-fit: cover;
   border-radius: 50%;
+  outline: 2px solid lightskyblue;
 }
+
 .post-content {
   margin: 1rem 0;
-  /* box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
-  padding: 0.5rem;
-  border-radius: 5px; */
 }
+
 .post-socials {
   cursor: pointer;
-  /* padding: 0.5rem; */
-  /* border: 1px solid black; */
 }
 
 .post-likes {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+}
+
+.post-action-btns {
+  padding: 0.3rem;
+  position: absolute;
+
+  bottom: 90%;
+  right: 10px;
+  border-radius: 5px;
+
+  box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
+}
+.post-actions {
+  display: flex;
+}
+
+.post-action-btn {
+  border: 2px solid white;
+  width: 4rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3px;
+  font-size: 12px;
+  background-color: lightskyblue;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 16px -8px rgba(36, 113, 173, 0.68);
+  border-radius: 5px;
+}
+
+.posted-time {
+  color: gray;
+  font-size: 12px;
+  height: 100%;
+  margin-top: 3.5px;
 }

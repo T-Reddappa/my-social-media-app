@@ -17,25 +17,8 @@ export const users = [
     coverPicture: "",
     description:
       "Senior Software Engineer @Microsoft | Creator of India’s biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
-    following: [
-      {
-        _id: "abcd2",
-        firstName: "Nirvi",
-        lastName: "Nirvi",
-        username: "Nirvi",
-        password: "nirvi1234",
-        profilePicture:
-          "https://tse4.mm.bing.net/th?id=OIP.HriNIvVww3aj-tdZrtyZzgHaE8&pid=Api&P=0&h=180",
-        coverPicture: "",
-        description:
-          "Senior Software Engineer @Microsoft | Creator of India’s biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
-        following: [],
-        followers: [],
-        bookmarks: [],
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-      },
-    ],
+    website: "",
+    following: [],
     followers: [],
     bookmarks: [],
     createdAt: formatDate(),
@@ -52,44 +35,9 @@ export const users = [
     coverPicture: "",
     description:
       "Senior Software Engineer @Microsoft | Creator of India’s biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
+    website: "https://nirviportfolio.com",
     following: [],
-    followers: [
-      {
-        _id: "abcd1",
-        firstName: "reddy",
-        lastName: "T",
-        username: "Reddy",
-        password: "reddy1234",
-        profilePicture:
-          "https://media.licdn.com/dms/image/C4D03AQHv1SvbdPPM9A/profile-displayphoto-shrink_400_400/0/1664248232839?e=1697068800&v=beta&t=vTL-kaB7piXRLJHOXC-4PIIhHPocGu9kLyzfQtQpH9w",
-        coverPicture: "",
-        description:
-          "Senior Software Engineer @Microsoft | Creator of India’s biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
-        following: [
-          {
-            _id: " abcd2",
-            firstName: "Nirvi",
-            lastName: "Nirvi",
-            username: "Nirvi",
-            password: "nirvi1234",
-            profilePicture:
-              "https://tse4.mm.bing.net/th?id=OIP.HriNIvVww3aj-tdZrtyZzgHaE8&pid=Api&P=0&h=180",
-            coverPicture: "",
-            description:
-              "Senior Software Engineer @Microsoft | Creator of India’s biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
-            following: [],
-            followers: [],
-            bookmarks: [],
-            createdAt: formatDate(),
-            updatedAt: formatDate(),
-          },
-        ],
-        followers: [],
-        bookmarks: [],
-        createdAt: formatDate(),
-        updatedAt: formatDate(),
-      },
-    ],
+    followers: [],
     bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -105,6 +53,7 @@ export const users = [
     coverPicture: "",
     description:
       "Senior Software Engineer @Microsoft | Creator of India’s biggest programming community | Tweets about JavaScript, ReactJS, Career and Startups",
+    website: "",
     following: [],
     followers: [],
     bookmarks: [],

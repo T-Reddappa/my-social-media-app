@@ -1,11 +1,12 @@
 .search-wrapper {
   display: flex;
   height: 3rem;
-  border: 1px solid gray;
+  border: 1px solid lightskyblue;
   width: 100%;
   align-items: center;
   gap: 1rem;
   padding: 0.6rem;
+  border-radius: 5px;
 }
 
 .search-bar {

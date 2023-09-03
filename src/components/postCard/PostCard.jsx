@@ -1,4 +1,9 @@
-import React, { useContext, useDeferredValue, useEffect } from "react";
+import React, {
+  useContext,
+  useDeferredValue,
+  useEffect,
+  useState,
+} from "react";
 import { PostContext } from "../../contexts/PostContext";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
@@ -8,15 +13,20 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 
 import "./postCard.css";
 import { useNavigate } from "react-router-dom";
 import { UsersContext } from "../../contexts/UserContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import postedDate from "../../utils/postedDate";
+import PostEditModal from "../postEditModal/PostEditModal";
 
 const PostCard = ({ post }) => {
   const { currentUser } = useContext(AuthContext);
+  const [showPostActions, setShowPostActions] = useState(false);
+  const [showPostModal, setShowPostModal] = useState(false);
 
   const {
     userState: { users, bookmarks },
@@ -24,6 +34,8 @@ const PostCard = ({ post }) => {
     getAllBookmarkPosts,
     bookmarkPost,
     removePostFromBookmarks,
+    followUser,
+    unfollowUser,
   } = useContext(UsersContext);
 
   const { likePost, postState, dislikePost, isLikedByCurrentUser, deletePost } =
@@ -35,6 +47,9 @@ const PostCard = ({ post }) => {
   const navigate = useNavigate();
 
   const isLiked = isLikedByCurrentUser(post, currentUser);
+  const isFollowing = profileToDisplay.followers.some(
+    (user) => user.username === currentUser.username
+  );
 
   const isBookmarked = bookmarks.some(
     (bookmarkedPost) => bookmarkedPost._id === post._id
@@ -43,6 +58,7 @@ const PostCard = ({ post }) => {
   const date = postedDate(post.createdAt);
   useEffect(() => {
     console.log(postedDate(post.createdAt));
+    console.log(isFollowing);
   });
 
   return (
@@ -74,16 +90,52 @@ const PostCard = ({ post }) => {
                 }}
               />
 
-              <p>{date}</p>
+              <p className="posted-time">{date}</p>
             </div>
 
             <div>
               <MoreVertOutlinedIcon
                 style={{ cursor: "pointer" }}
-                onClick={() => deletePost(post._id)}
+                onClick={() => setShowPostActions(!showPostActions)}
               />
             </div>
           </div>
+          {/* <div className="post-action-btns"> */}
+          {showPostActions && (
+            <div className="post-action-btns">
+              {post.username === currentUser.username ? (
+                <div className="post-actions">
+                  <button
+                    className="post-action-btn"
+                    onClick={() => deletePost(post._id)}
+                  >
+                    <DeleteOutlineOutlinedIcon style={{ fontSize: "14px" }} />
+                    Delete
+                  </button>
+
+                  <button
+                    className="post-action-btn"
+                    onClick={() => setShowPostModal(true)}
+                  >
+                    <EditNoteOutlinedIcon style={{ fontSize: "14px" }} />
+                    Edit
+                  </button>
+                </div>
+              ) : (
+                <button
+                  className="post-action-btn"
+                  onClick={() =>
+                    !isFollowing
+                      ? followUser(profileToDisplay._id)
+                      : unfollowUser(profileToDisplay._id)
+                  }
+                >
+                  {isFollowing ? "Unfollow" : "Follow"}
+                </button>
+              )}
+            </div>
+          )}
+          {/* </div> */}
           <div className="post-content">
             <p>{post.content}</p>
           </div>
@@ -127,6 +179,14 @@ const PostCard = ({ post }) => {
             </div>
           </div>
         </div>
+        {showPostModal && (
+          <PostEditModal
+            post={post}
+            setShowPostModal={setShowPostModal}
+            userPosted={profileToDisplay}
+            setShowPostActions={setShowPostActions}
+          />
+        )}
       </div>
     </>
   );

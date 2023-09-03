@@ -21,7 +21,7 @@ const postedDate = (createdDate) => {
       return min > 1 ? `${min} mins ago` : `${min} min ago`;
     }
   } else {
-    return sec > 1 ? `${sec} secs ago` : `${sec} secs ago`;
+    return sec > 30 ? `${sec} secs ago` : `Just now`;
   }
 };
 

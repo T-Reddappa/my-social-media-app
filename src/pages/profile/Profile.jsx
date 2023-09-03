@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./profile.css";
 import { AuthContext } from "../../contexts/AuthContext";
 import { UsersContext } from "../../contexts/UserContext";
 import { PostContext } from "../../contexts/PostContext";
 import { useParams } from "react-router-dom";
 import PostCard from "../../components/postCard/PostCard";
+import ProfileEditModal from "../../components/profileEditModal/ProfileEditModal";
+import LinkIcon from "@mui/icons-material/Link";
 
 const Profile = () => {
   const { token, currentUser } = useContext(AuthContext);
@@ -15,6 +17,9 @@ const Profile = () => {
     getUserByUsername,
     followUser,
     unfollowUser,
+    showProfileEditModal,
+
+    setShowProfileEditModal,
   } = useContext(UsersContext);
 
   const userProfile = userState.users.find(
@@ -53,7 +58,12 @@ const Profile = () => {
         <p>@{userProfile?.username}</p>
 
         {isLoggedInUser ? (
-          <button>Edit Profile</button>
+          <button
+            className="profile-edit-btn"
+            onClick={() => setShowProfileEditModal(true)}
+          >
+            Edit Profile
+          </button>
         ) : (
           <button
             className="profile-edit-btn"
@@ -73,20 +83,28 @@ const Profile = () => {
           </button>
         )}
         <div className="profile-description">{userProfile?.description}</div>
+        <div className="user-website-link">
+          <LinkIcon />
+          <a target="_blank" href={userProfile?.website}>
+            {userProfile?.website?.split("/")[2]}
+          </a>
+        </div>
         <div className="user-social-status">
+          {/* <div className="user-socials"> */}
           <div>
-            <p>{userProfile?.following?.length}</p>
+            <b>{userProfile?.following?.length}</b>
             <p>Following</p>
           </div>
           <div>
-            <p>{userPosts?.length}</p>
+            <b>{userPosts?.length}</b>
             <p>Posts</p>
           </div>
           <div>
-            <p>{userProfile?.followers?.length}</p>
+            <b>{userProfile?.followers?.length}</b>
             <p>Followers</p>
           </div>
         </div>
+        {showProfileEditModal && <ProfileEditModal />}
       </div>
       <h3>Your Posts </h3>
       {userPosts?.map((post) => (

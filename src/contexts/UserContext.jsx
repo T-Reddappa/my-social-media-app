@@ -1,12 +1,19 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useReducer,
+} from "react";
 import { AuthContext } from "./AuthContext";
 import { toast } from "react-toastify";
 
 export const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
-  const { token } = useContext(AuthContext);
+  const { token, setCurrentUser } = useContext(AuthContext);
+  const [showProfileEditModal, setShowProfileEditModal] = useState(false);
 
   const initialUserState = {
     users: [],
@@ -31,6 +38,14 @@ export const UsersProvider = ({ children }) => {
             );
             return updatedUser ? updatedUser : user;
           }),
+        };
+
+      case "EDIT_USER_PROFILE":
+        return {
+          ...state,
+          users: state.users.map((user) =>
+            user._id === action.payload._id ? action.payload : user
+          ),
         };
     }
   };
@@ -199,6 +214,31 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
+  const editUserProfile = async (editedInputs) => {
+    try {
+      const res = await axios.post(
+        "/api/users/edit",
+        { userData: editedInputs },
+        { headers: { authorization: token } }
+      );
+
+      const {
+        status,
+        data: { user },
+      } = res;
+      console.log(user);
+      if (status === 201) {
+        userDispatch({ type: "EDIT_USER_PROFILE", payload: user });
+        setCurrentUser(user);
+        toast.success("Profile updated successfully!");
+        setShowProfileEditModal(false);
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error("Something went wrong.");
+    }
+  };
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -215,6 +255,9 @@ export const UsersProvider = ({ children }) => {
         removePostFromBookmarks,
         followUser,
         unfollowUser,
+        editUserProfile,
+        showProfileEditModal,
+        setShowProfileEditModal,
       }}
     >
       {children}

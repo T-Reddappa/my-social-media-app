@@ -30,7 +30,7 @@ const Share = () => {
     e.preventDefault();
 
     createPost({ content: content?.content, media: pic });
-    setContent("");
+    setContent({ content: "" });
     setShowEmojiPicker(false);
   };
 
@@ -60,7 +60,7 @@ const Share = () => {
         )}
         <form className="shareBottom" onSubmit={handleSubmit}>
           <div className="shareOptions">
-            <label htmlFor="file" className="shareOption">
+            {/* <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor="tomato" className="shareIcon" />
               <span className="shareOptionText">Photo or Video</span>
               <input
@@ -70,26 +70,14 @@ const Share = () => {
                 accept=".png, .jpeg, .jpg"
                 onChange={(e) => setFile(e.target.files[0])}
               />
-            </label>
-            {/* <div className="shareOption">
-              <Label htmlColor="blue" className="shareIcon" />
-              <span className="shareOptionText">Tag</span>
-            </div>
-            <div className="shareOption">
-              <Room htmlColor="green" className="shareIcon" />
-              <span className="shareOptionText">Location</span>
-            </div> */}
+            </label> */}
+
             <div
               className="shareOption"
               onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             >
               <EmojiEmotions htmlColor="goldenrod" className="shareIcon" />
-              <span
-                className="shareOptionText"
-                // onClick={() => setShowEmojiPicker(true)}
-              >
-                Feelings
-              </span>
+              <span className="shareOptionText">Feelings</span>
             </div>
           </div>
           <button
