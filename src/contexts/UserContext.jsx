@@ -29,6 +29,8 @@ export const UsersProvider = ({ children }) => {
         return { ...state, users: [...state.users, action.payload] };
       case "ADD_TO_BOOKMARKS":
         return { ...state, bookmarks: action.payload };
+      case "GET_USER":
+        return { ...state, user: action.payload };
       case "FOLLOW_USER":
         return {
           ...state,
@@ -70,10 +72,15 @@ export const UsersProvider = ({ children }) => {
   };
 
   const getUserByUsername = async (username) => {
-    console.log(username);
     try {
       const res = await axios.get(`/api/users/${username}`);
-      console.log(res);
+      const {
+        status,
+        data: { user },
+      } = res;
+      if (status === 200) {
+        userDispatch({ type: "GET_USER", payload: user });
+      }
     } catch (e) {
       console.log(e);
     }

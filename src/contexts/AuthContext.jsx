@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   //user Signup
-  const signupHandler = async (firstName, lastName, username, password) => {
+  const signupHandler = async ({ firstName, lastName, username, password }) => {
     try {
       const res = await axios.post("/api/auth/signup", {
         firstName,
@@ -72,7 +72,8 @@ export const AuthProvider = ({ children }) => {
       console.log(res);
 
       if (status === 201) {
-        localStorageToken.setItem(
+        console.log(res, "201");
+        localStorage.setItem(
           "userLoginCredentials",
           JSON.stringify({ token: encodedToken, user: createdUser })
         );
@@ -80,7 +81,7 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser(createdUser);
         toast.success(`${createdUser.username} account created`);
         console.log(createdUser.username);
-        // userDispatch({ type: "ADD_USER", payload: createdUser });
+        navigate("/");
       }
     } catch (e) {
       console.error(e);

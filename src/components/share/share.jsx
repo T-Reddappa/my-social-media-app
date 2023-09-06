@@ -11,6 +11,7 @@ import "./share.css";
 import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { PostContext } from "../../contexts/PostContext";
+import { avatarImages } from "../../utils/avatars";
 
 const Share = () => {
   const { currentUser } = useContext(AuthContext);
@@ -43,7 +44,11 @@ const Share = () => {
     <div className="shareContainer">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img src={user?.profilePicture} alt="" className="shareProfileImg" />
+          <img
+            src={user?.profilePicture ? user.profilePicture : avatarImages[4]}
+            alt=""
+            className="shareProfileImg"
+          />
           <input
             placeholder={"What's in your mind " + user.username + "?"}
             className="shareInput"

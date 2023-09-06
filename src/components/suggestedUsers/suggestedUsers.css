@@ -3,6 +3,8 @@
   margin-top: 2rem;
   border-radius: 5px;
   padding: 0.5rem;
+  overflow: auto;
+  height: auto;
 }
 hr {
   margin: 0.5rem;

@@ -36,7 +36,11 @@ const ProfileEditModal = () => {
         <img
           onClick={() => setShowAvatars(true)}
           className="picture"
-          src={editInputs?.profilePicture}
+          src={
+            editInputs?.profilePicture
+              ? editInputs.profilePicture
+              : avatarImages[4]
+          }
           alt="heroine"
           suppressContentEditableWarning
         />

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  padding: 0 4rem;
+  padding: 0 2rem;
   /* background-color: black;
   color: white; */
 }
@@ -20,7 +20,7 @@
 }
 
 .page-container {
-  max-height: 100vh;
+  max-height: 90vh;
   overflow: auto;
   /* overflow: scroll; */
 }

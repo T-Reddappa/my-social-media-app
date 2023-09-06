@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import PostCard from "../../components/postCard/PostCard";
 import ProfileEditModal from "../../components/profileEditModal/ProfileEditModal";
 import LinkIcon from "@mui/icons-material/Link";
+import { avatarImages } from "../../utils/avatars";
 
 const Profile = () => {
   const { token, currentUser } = useContext(AuthContext);
@@ -36,6 +37,7 @@ const Profile = () => {
 
   useEffect(() => {
     getUserByUsername(username);
+    console.log(getUserByUsername(username));
     console.log(userState.users);
     window.scrollTo(0, 0);
   }, []);
@@ -44,7 +46,11 @@ const Profile = () => {
       <div className="profile-page-info">
         <img
           className="profile-page-picture"
-          src={userProfile?.profilePicture}
+          src={
+            userProfile?.profilePicture
+              ? userProfile.profilePicture
+              : avatarImages[4]
+          }
           alt=""
           onClick={() => {
             console.log(
@@ -90,7 +96,6 @@ const Profile = () => {
           </a>
         </div>
         <div className="user-social-status">
-          {/* <div className="user-socials"> */}
           <div>
             <b>{userProfile?.following?.length}</b>
             <p>Following</p>
@@ -108,7 +113,7 @@ const Profile = () => {
       </div>
       <h3>Your Posts </h3>
       {userPosts?.map((post) => (
-        <PostCard post={post} />
+        <PostCard post={post} key={post._id} />
       ))}
     </div>
   );

@@ -11,7 +11,7 @@ const ExplorePage = () => {
       <h2 onClick={() => console.log(allPosts)}>Explore Page</h2>
       <div className="page-container">
         {allPosts?.map((post) => (
-          <PostCard post={post} />
+          <PostCard post={post} key={post._id} />
         ))}
       </div>
     </div>

@@ -4,6 +4,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import RocketOutlinedIcon from "@mui/icons-material/RocketOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 import "./navbar.css";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -33,7 +34,15 @@ const Navbar = () => {
           {currentUser?.username ? currentUser.username : "Profile"}
         </NavLink>
 
-        <button onClick={logoutHandler}>Logout</button>
+        <button onClick={logoutHandler} className="logout-btn">
+          <LogoutIcon
+            style={{
+              color: "lightskyblue",
+              fontSize: "14px",
+            }}
+          />
+          Logout
+        </button>
       </nav>
     </div>
   );

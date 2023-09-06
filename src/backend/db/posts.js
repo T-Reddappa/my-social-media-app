@@ -17,7 +17,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "Reddy",
-    createdAt: formatDate(),
+    createdAt: "2023-03-15T01:06:00+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -25,12 +25,48 @@ export const posts = [
     content:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique ",
     likes: {
-      likeCount: 0,
+      likeCount: 7,
       likedBy: [],
       dislikedBy: [],
     },
     username: "Nirvi",
     createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content: "cupiditate non provident, similique ",
+    likes: {
+      likeCount: 7,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "Nirvi",
+    createdAt: "2021-04-15T01:06:00+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content: "cupiditate non provident, similique ",
+    likes: {
+      likeCount: 3,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "Nirvi",
+    createdAt: "2022-04-15T01:06:00+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content: "germany ",
+    likes: {
+      likeCount: 3,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "AsswinK",
+    createdAt: "2022-04-15T01:06:00+05:30",
     updatedAt: formatDate(),
   },
 ];

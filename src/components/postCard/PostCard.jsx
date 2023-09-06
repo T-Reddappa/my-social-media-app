@@ -22,6 +22,7 @@ import { UsersContext } from "../../contexts/UserContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import postedDate from "../../utils/postedDate";
 import PostEditModal from "../postEditModal/PostEditModal";
+import { avatarImages } from "../../utils/avatars";
 
 const PostCard = ({ post }) => {
   const { currentUser } = useContext(AuthContext);
@@ -47,7 +48,7 @@ const PostCard = ({ post }) => {
   const navigate = useNavigate();
 
   const isLiked = isLikedByCurrentUser(post, currentUser);
-  const isFollowing = profileToDisplay.followers.some(
+  const isFollowing = profileToDisplay?.followers.some(
     (user) => user.username === currentUser.username
   );
 
@@ -72,7 +73,11 @@ const PostCard = ({ post }) => {
             >
               <img
                 className="post-card-profile-picture"
-                src={profileToDisplay?.profilePicture}
+                src={
+                  profileToDisplay?.profilePicture
+                    ? profileToDisplay.profilePicture
+                    : avatarImages[4]
+                }
                 alt="Profile"
                 onClick={() => console.log(isLiked)}
               />

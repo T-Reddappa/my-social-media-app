@@ -11,10 +11,9 @@ const Signup = () => {
     lastName: "",
     username: "",
     password: "",
-    confirmPassword: "",
     hidePassword: true,
   });
-  document.title = "Signup | mySocial";
+  document.title = "Signup | myConverse";
 
   const signupFormHandler = (e) => {
     const { name, value } = e.target;
@@ -25,7 +24,7 @@ const Signup = () => {
     e.preventDefault();
     const { firstName, lastName, username, password } = userCredentials;
 
-    signupHandler(firstName, lastName, username, password);
+    signupHandler(userCredentials);
   };
   const handlePasswordVisibility = () => {
     setUserCredentials({

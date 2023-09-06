@@ -6,6 +6,7 @@ import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 
 import "./suggestedUsers.css";
 import { useNavigate } from "react-router-dom";
+import { avatarImages } from "../../utils/avatars";
 
 const SuggestedUsers = () => {
   const {
@@ -34,7 +35,9 @@ const SuggestedUsers = () => {
             <div className="suggest-user-card" key={user._id}>
               <div className="suggested-user-info">
                 <img
-                  src={user.profilePicture}
+                  src={
+                    user?.profilePicture ? user.profilePicture : avatarImages[4]
+                  }
                   alt={user.username}
                   className="suggest-user-profile-picture"
                   onClick={() => navigate(`/profile/${user.username}`)}

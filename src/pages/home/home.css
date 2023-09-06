@@ -1,21 +1,29 @@
-/* .homepage-layout {
-  display: flex;
-  gap: 2rem;
-  /* grid-template-columns: 1fr 1fr; 
- } */
-
 .page-container {
-  max-height: 100vh;
   overflow: auto;
-  /* overflow: scroll; */
+}
+
+.homepage-heading-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 1rem;
+  align-items: center;
+  text-align: end;
 }
 
 ::-webkit-scrollbar {
   width: 2px;
-
   background-color: lightgray;
 }
 
 ::-webkit-scrollbar-thumb {
   background: lightblue;
+}
+
+.sorting-options {
+  width: 5rem;
+  height: 1.7rem;
+  border: 1px solid lightskyblue;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 1px solid lightskyblue;
 }

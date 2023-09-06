@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
+import { act } from "@testing-library/react";
 
 export const PostContext = createContext();
 
@@ -20,6 +21,22 @@ export const PostProvider = ({ children }) => {
     post: {},
   };
 
+  const sortByTrending = (posts) => {
+    return [...posts].sort((a, b) => a.likes.likeCount - b.likes.likeCount);
+  };
+
+  const sortByLatest = (posts) => {
+    return [...posts].sort(
+      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    );
+  };
+
+  const sortByOldest = (posts) => {
+    return [...posts].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+  };
+
   const postsReducer = (state, action) => {
     switch (action.type) {
       case "GET_ALL_POSTS":
@@ -34,6 +51,12 @@ export const PostProvider = ({ children }) => {
         return { ...state, allPosts: action.payload };
       case "EDIT_POST":
         return { ...state, allPosts: action.payload };
+      case "SORT_BY_TRENDING":
+        return { ...state, allPosts: sortByTrending(state.allPosts) };
+      case "SORT_BY_LATEST":
+        return { ...state, allPosts: sortByLatest(state.allPosts) };
+      case "SORT_BY_OLDEST":
+        return { ...state, allPosts: sortByOldest(state.allPosts) };
       default:
         return state;
     }
@@ -185,6 +208,7 @@ export const PostProvider = ({ children }) => {
     <PostContext.Provider
       value={{
         postState,
+        postDispatch,
         getAllPosts,
         createPost,
         likePost,
